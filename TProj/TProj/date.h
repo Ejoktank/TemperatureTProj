@@ -9,9 +9,15 @@ class Date
 	int hour, day, month;
 
 public:
-
+	Date() {}
 	Date(int m, int d, int h);
 	string getDate();
 	bool IsDay();
-	void Show()
+	void Show();
+
+	bool operator<(const Date & s);
+	bool operator>(const Date & s);
+	bool operator==(const Date & s);
+	bool operator>=(const Date & s);
+	bool operator<=(const Date & s);
 };

@@ -3,17 +3,17 @@
 Date::Date(int m, int d, int h)
 {
 	int MounthDay[13] = {-1, 31,28,31,30,31,30,31,31,30,31,30,31};
-	if (m < 1 && m > 12)
+	if (m < 1 || m > 12)
 	{
-		throw "Invalid mounth";
+		throw "Invalid mounth\0";
 	}
-	if (d < 1 && d > MounthDay[m])
+	if (d < 1 || d > MounthDay[m])
 	{
-		throw "Invalid day";
+		throw "Invalid day\0";
 	}
-	if (h < 1 && h > 24)
+	if (h < 1 || h > 24)
 	{
-		throw "Invalid hour";
+		throw "Invalid hour\0";
 	}
 	month = m;
 	day = d;
@@ -40,8 +40,54 @@ bool Date::IsDay()
 		return false;
 }
 
+bool Date::operator<(const Date& d)
+{
+	int s1 = month * 10000 + day * 100 + hour;
+	int s2 = d.month * 10000 + d.day * 100 + d.hour;
+
+	if (s1 < s2)
+		return true;
+	return false;
+}
+bool Date::operator>(const Date& d)
+{
+	int s1 = month * 10000 + day * 100 + hour;
+	int s2 = d.month * 10000 + d.day * 100 + d.hour;
+
+	if (s1 > s2)
+		return true;
+	return false;
+}
+bool Date::operator==(const Date& d)
+{
+	int s1 = month * 10000 + day * 100 + hour;
+	int s2 = d.month * 10000 + d.day * 100 + d.hour;
+
+	if (s1 == s2)
+		return true;
+	return false;
+}
+bool Date::operator<=(const Date& d)
+{
+	int s1 = month * 10000 + day * 100 + hour;
+	int s2 = d.month * 10000 + d.day * 100 + d.hour;
+
+	if (s1 <= s2)
+		return true;
+	return false;
+}
+bool Date::operator>=(const Date& d)
+{
+	int s1 = month * 10000 + day * 100 + hour;
+	int s2 = d.month * 10000 + d.day * 100 + d.hour;
+
+	if (s1 >= s2)
+		return true;
+	return false;
+}
+
 void Date::Show()
 {
-
+	cout << getDate();
 }
 
