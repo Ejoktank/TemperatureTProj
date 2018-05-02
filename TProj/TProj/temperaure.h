@@ -6,11 +6,11 @@ using namespace std;
 
 class Temperature 
 {
-	bool FirstAdd = true;
+	bool FirstAdd;
 	vector<pair<Date, double>> calendar; // массив дат и температур 
 	Date lastDate; //ѕоследнее добавленное значение
 public:
-	Temperature() {}
+	Temperature() {FirstAdd = true;} 
 	Temperature (vector<pair<Date, double> > c); // конструктор
 	double GetAverageTemp(bool b); // среднее значение
 	void Show();

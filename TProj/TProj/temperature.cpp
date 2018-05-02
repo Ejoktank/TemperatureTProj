@@ -1,8 +1,10 @@
 #include "temperaure.h"
 
-Temperature::Temperature(vector<pair<Date, double>> m)
+Temperature::Temperature(vector<pair<Date, double>> m) // вектор, элементами которого €вл€етс€ пара date и double
 {
+	FirstAdd = false; 
 	calendar = m;
+	lastDate = calendar[calendar.size()-1].first; // устанавливаем последнюю добавленную дату
 }
 
 void Temperature::Add(Date d, double temp)
@@ -19,18 +21,18 @@ void Temperature::Add(Date d, double temp)
 			throw "Ќеверный пор€док заполнени€\0";
 		else
 		{
-			calendar.push_back(pair<Date, double>(d, temp));
+			calendar.push_back(pair<Date, double>(d, temp)); // добавл€ет новы элемент в конец вектора
 			lastDate = d;
 		}
 	}
 }
 
-double Temperature::GetAverageTemp(bool b)
+double Temperature::GetAverageTemp(bool b) 
 {
 	double sum = 0;
 	int k = 0;
 	for (int i = 0; i < calendar.size(); i++)
-		if (calendar[i].first.IsDay() == b)
+		if (calendar[i].first.IsDay() == b) // отсивает день или ночь
 		{
 			sum += calendar[i].second;
 			k++;
@@ -41,9 +43,9 @@ double Temperature::GetAverageTemp(bool b)
 
 void Temperature::Show()
 {
-	for each (pair<Date, double> var in calendar)
+	for (int i = 0; i < calendar.size(); i++)
 	{
-		cout << var.first.getDate() << " = " << var.second << ";\n";
+		cout << calendar[i].first.getDate() << " temperature: " << calendar[i].second << ";\n";
 	}
 }
 

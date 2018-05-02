@@ -7,7 +7,7 @@ Date::Date(int m, int d, int h)
 	{
 		throw "Invalid mounth\0";
 	}
-	if (d < 1 || d > MounthDay[m])
+	if (d < 1 || d > MounthDay[m])              
 	{
 		throw "Invalid day\0";
 	}
@@ -29,7 +29,7 @@ string Date::getDate()
 	s += " ";
 	s += to_string(hour); 
 	s += "h";
-	return s; //"15.12 10h"
+	return s; //"MM.DD HHh"
 }
 
 bool Date::IsDay()
